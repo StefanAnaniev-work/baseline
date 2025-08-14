@@ -16,6 +16,10 @@
 
 // basic io
 
+__attribute_used__ int testGlobalStatic() {
+  return 1 + 1;
+}
+
 namespace test_01 {
   void basicIO() {
     std::cout << "basic io - enter an integer: ";
@@ -193,9 +197,9 @@ namespace test_05 {
   };
   class StaticExample {
   public:
-    int count = 0;
+    static int count;
     StaticExample() { ++count; }
-    void displayCount() {
+    static void displayCount() {
       std::cout << "static count: " << count << std::endl;
     }
   };
@@ -256,8 +260,10 @@ namespace test_05 {
     b->show();
     delete b;
   }
+  int StaticExample::count = 0;
   void testStaticExample() {
     StaticExample s1, s2;
+    StaticExample::displayCount();
   }
   void testBaseNamespace() {
     BaseNamespace::greet();
@@ -449,6 +455,18 @@ namespace test_15 {
   }
 }
 
+// structured bindings
+namespace test_16 {
+  void structuredBindings() {
+    std::pair<int, std::string> p(1, "structuredBindingsExample");
+    auto [num, str] = p;
+    std::cout << "structured bindings: " << num << ", " << str << std::endl;
+  }
+  void entry() {
+    structuredBindings();
+  }
+}
+
 // no returning functions
 namespace test_17 {
   void infiniteLoop() {
@@ -498,6 +516,7 @@ namespace test_17 {
 }
 
 int main() {
+  testGlobalStatic();
   test_01::entry();
   test_01::entry();
   test_02::entry();
@@ -514,6 +533,7 @@ int main() {
   test_13::entry();
   test_14::entry();
   test_15::entry();
+  test_16::entry();
   test_17::entry();
   return 0;
 }
