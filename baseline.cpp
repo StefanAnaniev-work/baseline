@@ -21,6 +21,9 @@ __attribute_used__ int testGlobalStatic() {
 }
 
 namespace test_01 {
+  int newSymbolAdded_1() {
+    return 1;
+  }
   void basicIO() {
     std::cout << "basic io - enter an integer: ";
     int x;
@@ -48,6 +51,9 @@ namespace test_01 {
 
 // basic data types and operators
 namespace test_02 {
+  int newSymbolAdded_2() {
+    return 2;
+  }
   void dataTypesAndOperators() {
     int a = 5;
     double b = 3.14;
@@ -65,6 +71,9 @@ namespace test_02 {
 
 // control flow statements
 namespace test_03 {
+  int newSymbolAdded_3() {
+    return 3;
+  }
   void simpleControlFlow() {
     int x = 10;
     if (x > 5) {
@@ -198,6 +207,7 @@ namespace test_05 {
   class StaticExample {
   public:
     static int count;
+    static int new_count;
     StaticExample() { ++count; }
     static void displayCount() {
       std::cout << "static count: " << count << std::endl;
@@ -261,6 +271,7 @@ namespace test_05 {
     delete b;
   }
   int StaticExample::count = 0;
+  int StaticExample::new_count = 0;
   void testStaticExample() {
     StaticExample s1, s2;
     StaticExample::displayCount();
