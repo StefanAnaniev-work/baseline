@@ -16,10 +16,6 @@
 
 // basic io
 
-__attribute_used__ int testGlobalStatic() {
-  return 1 + 1;
-}
-
 namespace test_01 {
   void basicIO() {
     std::cout << "basic io - enter an integer: ";
@@ -53,8 +49,10 @@ namespace test_02 {
     double b = 3.14;
     char c = 'a';
     bool d = true;
+    int newVariableAdded = 7;
     std::cout << "int: " << a << std::endl;
     std::cout << "double: " << b << std::endl;
+    std::cout << "new variable added: " << newVariableAdded << std::endl;
     std::cout << "char: " << c << std::endl;
     std::cout << "bool: " << d << std::endl;
   }
@@ -134,9 +132,9 @@ namespace test_03 {
     }
 }
 void entry() {
-  simpleControlFlow();
   switchCase(99);
   consequentIfs(33);
+  simpleControlFlow();
   }
 }
 
@@ -152,9 +150,9 @@ namespace test_04 {
     std::cout << "double: " << i << std::endl;
   }
   void entry() {
-    print_char('a');
     print_int(1);
     print_double(1.1);
+    print_char('a');
   }
 }
 
@@ -200,6 +198,7 @@ namespace test_05 {
     static int count;
     StaticExample() { ++count; }
     static void displayCount() {
+      ++count;
       std::cout << "static count: " << count << std::endl;
     }
   };
@@ -513,6 +512,10 @@ namespace test_17 {
     abortProgram();
     throwException();
   }
+}
+
+__attribute_used__ int testGlobalStatic() {
+  return 1 + 1;
 }
 
 int main() {
